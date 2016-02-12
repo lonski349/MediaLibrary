@@ -29,7 +29,7 @@
 #include <iostream>
 #include <fstream>
 
-MediaServer::MediaServer(AbstractServerConnecter &connector, int port, string mediafile) : mediaserverstub(connector) {
+MediaLibrary::MediaLibrary(AbstractServerConnecter &connector, int port, string mediafile) : mediaserverstub(connector) {
   Json::Reader reader;
   Json::Value root;
 
@@ -48,11 +48,11 @@ MediaServer::MediaServer(AbstractServerConnecter &connector, int port, string me
   cout << "Server running on port " << port << endl;
 }
 
-void MediaServer::notifyServer() {
+void MediaLibrary::notifyServer() {
   cout << "Media server notified" << endl;
 }
 
-string MediaServer::serviceInfo() {
+string MediaLibrary::serviceInfo() {
   string message = "Permissible commands include: Add, Remove, Get, GetTitles, GetMusicTitles, GetVideoTitles on ";
   return message.append(portNumber);
 }
