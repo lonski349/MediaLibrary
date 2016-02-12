@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<project name="Assign 5"
+         default="targets" basedir="."
+         xmlns:dn="antlib:org.apache.ant.dotnet"
+         xmlns="antlib:org.apache.tools.ant"
+         xmlns:cpptasks="antlib:net.sf.antcontrib.cpptasks">
+   <taskdef resource="cpptasks.tasks"/>
+   <taskdef resource="net/sf/antcontrib/antcontrib.properties"/>
+
+   <property name="csrc.dir" value="src"/>
+   <property name="dist.dir" value="bin" />
+   <property name="lib" value="./lib" />
+   <property name="host.name" value="127.0.0.1"/>
+   <property name="port.num" value="8080"/>
+   <property name="json.file.name" value="mediaRPCMethods.json"/>
+   <property name="client.lib.path" value="/usr/local/lib"/>
+   <property name="client.lib.list" value="jsoncpp,jsonrpccpp-client,jsonrpccpp-common,microhttpd,fltk,stdc++"/>
+   <property name="server.lib.path" value="/usr/local/lib"/>
+   <property name="server.lib.list" value="jsoncpp,jsonrpccpp-server,jsonrpccpp-common,microhttpd,stdc++"/>
+   <property name="includepath" value="/usr/local/include"/>
+   <property name="includepath2" value="/usr/include/jsoncpp"/>
+   <property name="cxxflag" value="-std=c++11"/>
+   
+
+   <target name="targets">
+      <echo message="Targets are clean, prepare, generate.server.stub, build.server, generate.client.stub, build.client, targets"/>
+      <echo message="base directory is: ${basedir}"/>
+      <echo message="execute server with: ./bin/mediaRPCServer ${port.num}"/>
+      <echo message="execute client with: ./bin/mediaRPCClient http://${host.name}:${port.num}"/>   
+   </target>
+   
+   <target name="prepare">
+      <mkdir dir="${dist.dir}" />
+   </target>
+
+   <target name="clean">
+      <delete dir="${dist.dir}" failonerror="false"/>
+      <delete file="${csrc.dir}/server/mediaserverstub.h"
+              failonerror="false"/>
+      <delete file="${csrc.dir}/client/mediastub.h"
+              failonerror="false"/>
+   </target>
+
+   <target name="generate.client.stub" depends="prepare">
+      <exec dir="${basedir}" executable="jsonrpcstub">
+         <arg line="${json.file.name} --cpp-client=mediastub"/>
+      </exec>
+      <copy file="mediastub.h"
+            tofile="${csrc.dir}/client/mediastub.h"/>
+      <delete file="mediastub.h"/>
+   </target>
+
+   <target name="build.client" depends="generate.client.stub">
+      <cc outtype="executable" subsystem="console"
+          outfile="${dist.dir}/mediaRPCClient">
+         <compilerarg value="${cxxflag}"/>
+         <includepath>
+            <pathelement path="${includepath}"/>
+	    <pathelement path="${includepath2}"/>
+         </includepath>
+         <libset dir="${client.lib.path}" libs="${client.lib.list}"/>
+         <fileset dir="${csrc.dir}/client" includes="*.cpp"/>
+      </cc>
+   </target>
+
+   <target name="generate.server.stub" depends="prepare">
+      <exec dir="${basedir}" executable="jsonrpcstub">
+         <arg line="${json.file.name} --cpp-server=mediaserverstub"/>
+      </exec>
+      <copy file="mediaserverstub.h"
+            tofile="${csrc.dir}/server/mediaserverstub.h"/>
+      <delete file="mediaserverstub.h"/>
+   </target>
+
+   <target name="build.server" depends="generate.server.stub">
+     <cc outtype="executable" subsystem="console"
+         outfile="${dist.dir}/mediaRPCServer">
+        <compiler name="g++"/>
+         <includepath>
+            <pathelement path="${includepath}"/>
+            <pathelement path="${includepath2}"/>
+         </includepath>
+         <libset dir="${server.lib.path}" libs="${server.lib.list}"/>
+         <fileset dir="${csrc.dir}/server"
+                  includes="*.hpp, *.cpp"/>
+      </cc>
+   </target>
+
+
+</project>

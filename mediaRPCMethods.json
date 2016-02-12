@@ -1,0 +1,40 @@
+[
+    {
+	"method": "notifyServer"
+    },
+    {	
+        "method": "serviceInfo",
+        "params": [ ],
+        "returns": "I am the Media server."
+    },
+    {	
+        "method": "Add",
+        "params": [1, "title", "author", "genre", "album", "filename"],
+        "returns": true
+    },
+    {	
+        "method": "Remove",
+        "params": ["title"],
+        "returns": true
+    },
+    {	
+        "method": "Get",
+        "params": ["title"],
+        "returns": [1, "title", "author", "genre", "album", "filename"]
+    },
+    {	
+        "method": "GetTitles",
+        "params": [],
+        "returns": [ ]
+    },
+    {	
+        "method": "GetMusicTitles",
+        "params": [],
+        "returns": [ ]
+    },
+    {	
+        "method": "GetVideoTitles",
+        "params": [],
+        "returns": [ ]
+    }
+]
