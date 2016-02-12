@@ -27,6 +27,7 @@
 
 #include <iostream>
 #include "MediaLibrary.hpp"
+#include "MediaDescription.hpp"
 
 int main() {
 
@@ -77,7 +78,7 @@ int main() {
     //      << "Wreck It Ralph has been removed from the library. \n";
 
     //Instantiate Json MediaLibrary
-    MediaLibrary jLibrary = MediaLibrary::MediaLibrary("media.json");
+    MediaLibrary jLibrary = MediaLibrary("media.json");
 
     //Displays the updated list of items in the library
     cout << "==================================================\n";
