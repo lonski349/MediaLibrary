@@ -37,7 +37,7 @@
 
 using namespace jsonrpc;
 
-class MediaLibrary {
+class MediaLibrary : public mediaserverstub {
 public:
     MediaServer(AbstractServerConnecter &connector, int port, string mediafile) : mediaserverstub(connector);
     void notifyServer();
