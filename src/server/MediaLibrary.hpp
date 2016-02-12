@@ -29,8 +29,11 @@
 
 #include <stdio.h>
 #include "MediaDescription.hpp"
-#include <vector>
 #include <json/json.h>
+#include <jsonrpccpp/server.h>
+#include <jsonrpccpp/server/connectors/httpserver.h>
+#include <stdlib.h>
+#include "mediaserverstub.h"
 
 
 class MediaLibrary {
