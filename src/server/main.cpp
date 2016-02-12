@@ -77,7 +77,7 @@ int main() {
     //      << "Wreck It Ralph has been removed from the library. \n";
 
     //Instantiate Json MediaLibrary
-    MediaLibrary jLibrary = MediaLibrary("media.json");
+    MediaLibrary jLibrary = MediaLibrary::MediaLibrary("media.json");
 
     //Displays the updated list of items in the library
     cout << "==================================================\n";
