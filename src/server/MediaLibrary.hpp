@@ -35,6 +35,7 @@
 #include <stdlib.h>
 #include "mediaserverstub.h"
 
+using namespace jsonrpc;
 
 class MediaLibrary {
 public:
