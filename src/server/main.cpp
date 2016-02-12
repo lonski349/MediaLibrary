@@ -85,7 +85,7 @@ int main() {
     cout << "==================================================\n";
     //jLibrary.Add(*new MediaDescription("Music", "Slow Show", "The National", "Matt Berninger", "Indie", "Slow_Show.mp3"));
     //jLibrary.getTitles();vector<string> medLib;
-    vector<string> medLib;
+    Json::Value medLib;
     medLib = jLibrary.getTitles();
     for (int i = 0; i < medLib.size(); i++) {
         cout << medLib[i] << " added\n";
