@@ -39,7 +39,6 @@ MediaLibrary::MediaLibrary(AbstractServerConnecter &connector, int port, string 
       Json::Value::Members values = root.getMemberNames();
       for(int i = 0; i < values.size(); i++){
           Json::Value media = root[values[i]];
-
           library.push_back(MediaDescription(media));
       }
   }
@@ -56,8 +55,6 @@ string MediaLibrary::serviceInfo() {
   string message = "Permissible commands include: Add, Remove, Get, GetTitles, GetMusicTitles, GetVideoTitles on ";
   return message.append(portNumber);
 }
-
-
 
 //Constructor
 MediaLibrary::MediaLibrary() { }
