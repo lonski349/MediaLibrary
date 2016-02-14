@@ -47,10 +47,10 @@ public:
     ~MediaLibrary();
     bool Add(MediaDescription aClip);
     bool Remove(string title);
-    Json::Value get(string title);
-    Json::Value getTitles();
-    Json::Value getMusicTitles();
-    Json::Value getVideoTitles();
+    virtual Json::Value get(string title);
+    virtual Json::Value getTitles();
+    virtual Json::Value getMusicTitles();
+    virtual Json::Value getVideoTitles();
 
     void toJsonFile(string jsonfile);
 
