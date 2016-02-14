@@ -100,13 +100,13 @@ bool MediaLibrary::Remove(string title) {
 }
 
 //Returns the MediaDescription
-Json::Value MediaLibrary::get(string title) {
+ virtual Json::Value MediaLibrary::get(string title) {
     int found = findMedia(title);
     return library[found].toJson();
 }
 
 //Returns a vector of all titles.
-Json::Value MediaLibrary::getTitles() {
+virtual Json::Value MediaLibrary::getTitles() {
     Json::Value titles;
     for(int i = 0; i < library.size(); i++) {
         titles.append(library[i].getTitle());
@@ -115,7 +115,7 @@ Json::Value MediaLibrary::getTitles() {
 }
 
 //Returns a vector of music titles
-Json::Value MediaLibrary::getMusicTitles() {
+virtual Json::Value MediaLibrary::getMusicTitles() {
     Json::Value titles;
     for(int i = 0; i < library.size(); i++) {
         if(library[i].getMediaType().compare("Music") == 0) {
@@ -126,7 +126,7 @@ Json::Value MediaLibrary::getMusicTitles() {
 }
 
 //Returns a vector of video titles
-Json::Value MediaLibrary::getVideoTitles() {
+virtual Json::Value MediaLibrary::getVideoTitles() {
     Json::Value titles;
     for(int i = 0; i < library.size(); i++) {
         if(library[i].getMediaType().compare("Video") == 0) {
