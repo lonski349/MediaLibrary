@@ -52,8 +52,10 @@ void MediaLibrary::notifyServer() {
 }
 
 string MediaLibrary::serviceInfo() {
-  string message = "Permissible commands include: Add, Remove, Get, GetTitles, GetMusicTitles, GetVideoTitles on ";
-  return message.append(portNumber);
+  string message = "Permissible commands include: Add, Remove, Get, GetTitles, GetMusicTitles, GetVideoTitles at port ";
+  stringstream ss;
+  ss << portNumber;
+  return message.append(ss.str());
 }
 
 //Add MediaDescription
@@ -123,17 +125,6 @@ Json::Value MediaLibrary::getVideoTitles() {
         }
     }
     return titles;
-}
-
-//Returns the index of a specified title
-int MediaLibrary::findMedia(const string &title) {
-    int found = -1;
-    for(int i = 0; i < library.size(); i++) {
-        if(title.compare(library[i].getTitle()) == 0) {
-            found = i;
-        }
-    }
-    return found;
 }
 
 void MediaLibrary::toJsonFile(string jsonfile){
