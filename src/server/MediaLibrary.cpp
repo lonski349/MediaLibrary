@@ -80,12 +80,12 @@ bool MediaLibrary::Remove(const string &title) {
 Json::Value MediaLibrary::get(const string &title) {
    Json::Value media;
    int found = findMedia(title);
-   media.append(library[found].getMediaType());
-   media.append(library[found].getTitle());
-   media.append(library[found].getAuthor());
-   media.append(library[found].getGenre());
-   media.append(library[found].getAlbum());
-   media.append(library[found].getFilename());
+   media.append(library.at(found).getMediaType());
+   media.append(library.at(found).getTitle());
+   media.append(library.at(found).getAuthor());
+   media.append(library.at(found).getGenre());
+   media.append(library.at(found).getAlbum());
+   media.append(library.at(found).getFilename());
    return media;
 }
 
