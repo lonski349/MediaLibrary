@@ -344,6 +344,6 @@ public:
 // main method for this program.
 int main(int argc, char * argv[]) {
    std::string nameStr = "Harman Library";
-   MediaClient mc(nameStr, "http://192.168.1.9:8080");
+   MediaClient mc(nameStr, "http://192.168.1.10:8080");
    return (Fl::run());
 }
