@@ -29,7 +29,7 @@
 #include <iostream>
 #include <fstream>
 
-MediaLibrary::MediaLibrary(AbstractServerConnecter &connector, int port, string mediafile) : mediaserverstub(connector) {
+MediaLibrary::MediaLibrary(AbstractServerConnector &connector, int port, string mediafile) : mediaserverstub(connector) {
   Json::Reader reader;
   Json::Value root;
 

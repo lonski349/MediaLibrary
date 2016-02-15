@@ -43,7 +43,7 @@ class MediaLibrary : public mediaserverstub {
   int findMedia(string title);
   int portNumber;
 public:
-    MediaLibrary(AbstractServerConnecter &connector, int port, string mediafile);
+    MediaLibrary(AbstractServerConnector &connector, int port, string mediafile);
     virtual void notifyServer();
     virtual string serviceInfo();
     virtual bool add(int mediaType, const string &title, const string &author, const string &album, const string &genre, const string &filename);
@@ -53,7 +53,7 @@ public:
     virtual Json::Value getMusicTitles();
     virtual Json::Value getVideoTitles();
 
-    void toJsonFile(string jsonfile);    
+    void toJsonFile(string jsonfile);
 };
 
 #endif /* MediaLibrary_hpp */
