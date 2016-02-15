@@ -56,21 +56,15 @@ string MediaLibrary::serviceInfo() {
   return message.append(portNumber);
 }
 
-//Constructor
-MediaLibrary::MediaLibrary() { }
-
-//Destructor
-MediaLibrary::~MediaLibrary() { }
-
 //Add MediaDescription
-virtual bool MediaLibrary::Add(int mediaType, const string &title, const string &author, const string &album, const string &genre, const string &filename) {
+bool MediaLibrary::Add(int mediaType, const string &title, const string &author, const string &album, const string &genre, const string &filename) {
     library.push_back(MediaDescription(mediaType, title, author, album, genre, filename));
     cout << title << " has been added to the Media Library ";
     return true;
 }
 
 //Remove Media
-virtual bool MediaLibrary::Remove(const string &title) {
+bool MediaLibrary::Remove(const string &title) {
     int found = findMedia(title);
     bool removed = false;
     if(found != -1) {
@@ -83,13 +77,20 @@ virtual bool MediaLibrary::Remove(const string &title) {
 }
 
 //Returns the MediaDescription
- virtual Json::Value MediaLibrary::get(const string &title) {
+Json::Value MediaLibrary::get(const string &title) {
+   Json::Value media;
     int found = findMedia(title);
-    return library[found].toJson();
+    media.append(library[found].getMediaType());
+    media.append(library[found].getTitle());
+    media.append(library[found].getAuthor());
+    media.append(library[found].getGenre());
+    media.append(library[found].getAlbum());
+    media.append(library[found].getFilename());
+    return media;
 }
 
 //Returns a vector of all titles.
-virtual Json::Value MediaLibrary::getTitles() {
+Json::Value MediaLibrary::getTitles() {
     Json::Value titles;
     for(int i = 0; i < library.size(); i++) {
         titles.append(library[i].getTitle());
@@ -98,7 +99,7 @@ virtual Json::Value MediaLibrary::getTitles() {
 }
 
 //Returns a vector of music titles
-virtual Json::Value MediaLibrary::getMusicTitles() {
+Json::Value MediaLibrary::getMusicTitles() {
     Json::Value titles;
     for(int i = 0; i < library.size(); i++) {
         if(library[i].getMediaType() == 0) {
@@ -109,7 +110,7 @@ virtual Json::Value MediaLibrary::getMusicTitles() {
 }
 
 //Returns a vector of video titles
-virtual Json::Value MediaLibrary::getVideoTitles() {
+Json::Value MediaLibrary::getVideoTitles() {
     Json::Value titles;
     for(int i = 0; i < library.size(); i++) {
         if(library[i].getMediaType() == 1) {
