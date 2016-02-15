@@ -40,7 +40,7 @@ using namespace std;
 
 class MediaLibrary : public mediaserverstub {
 public:
-    MediaLibrary(AbstractServerConnecter &connector, int port, string mediafile) : mediaserverstub(connector);
+    MediaLibrary(AbstractServerConnecter &connector, int port, string mediafile);
     virtual void notifyServer();
     virtual string serviceInfo();
     virtual bool add(int mediaType, const string &title, const string &author, const string &album, const string &genre, const string &filename);
