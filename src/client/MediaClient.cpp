@@ -151,7 +151,7 @@ public:
         case     FL_TREE_REASON_CLOSED: {aStr = "closed"; break;}
         case   FL_TREE_REASON_SELECTED: {
            aStr = "selection";
-           Json::Value temp = ms.Get(aTitle);
+           Json::Value temp = ms.get(aTitle);
            mediaType->value(temp[0].asInt());
            titleInput->value(aTitle.c_str());
            authorInput->value(temp[2].asCString());
@@ -206,7 +206,7 @@ public:
               << " type " << mediaType->value()
               << " " << endl;
          //Add media to server
-         bool addRes = ms.Add(mediaType->value(), titleInput->value(), authorInput->value(),
+         bool addRes = ms.add(mediaType->value(), titleInput->value(), authorInput->value(),
               genreInput->value(), albumInput->value(), fileInput->value());
          //Rebuild tree if add successful
          if(addRes){
@@ -219,7 +219,7 @@ public:
               << " type " << mediaType->value()
               << " " << endl;
          //Remove media from server
-         bool remRes = ms.Remove(titleInput->value());
+         bool remRes = ms.remove(titleInput->value());
          //Rebuild tree if remove successful
          if(remRes){
             buildTree();
@@ -288,8 +288,8 @@ public:
       mediastub ms(httpclient);
 
       //Get current media server titles
-      Json::Value mtitles = ms.GetMusicTitles();
-      Json::Value vtitles = ms.GetVideoTitles();
+      Json::Value mtitles = ms.getMusicTitles();
+      Json::Value vtitles = ms.getVideoTitles();
 
       vector<string> musicList;
       vector<string> musicAlbum;
@@ -297,13 +297,13 @@ public:
       vector<string> videoGenre;
 
       for(int i = 0; i < mtitles.size(); i++){
-          Json::Value temp = ms.Get(mtitles[i].asString());
+          Json::Value temp = ms.get(mtitles[i].asString());
           musicList.push_back(temp[1].asString());
           musicAlbum.push_back(temp[4].asString());
       }
 
       for(int i = 0; i < vtitles.size(); i++){
-          Json::Value temp = ms.Get(vtitles[i].asString());
+          Json::Value temp = ms.get(vtitles[i].asString());
           videoList.push_back(temp[1].asString());
           videoGenre.push_back(temp[3].asString());
       }
@@ -343,7 +343,7 @@ public:
 
 // main method for this program.
 int main(int argc, char * argv[]) {
-   std::string nameStr = (argc>1)?argv[1]:"Carneado Library";
-   MediaClient mc(nameStr, string(argv[1]));
+   std::string nameStr = "Harman Library";
+   MediaClient mc(nameStr, "192.168.1.15");
    return (Fl::run());
 }
