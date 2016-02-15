@@ -67,7 +67,12 @@ bool MediaLibrary::add(int mediaType, const string &title, const string &author,
 
 //Remove Media
 bool MediaLibrary::remove(const string &title) {
-    int found = findMedia(title);
+  int found = -1;
+  for(int i = 0; i < library.size(); i++) {
+      if(title.compare(library[i].getTitle()) == 0) {
+          found = i;
+      }
+  }
     bool removed = false;
     if(found != -1) {
         cout << "Deleting " << title << " from the library... \n";
