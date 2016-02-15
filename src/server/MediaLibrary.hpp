@@ -52,7 +52,6 @@ public:
     virtual Json::Value getTitles();
     virtual Json::Value getMusicTitles();
     virtual Json::Value getVideoTitles();
-
     void toJsonFile(string jsonfile);
 };
 
