@@ -62,23 +62,6 @@ MediaLibrary::MediaLibrary() { }
 //Destructor
 MediaLibrary::~MediaLibrary() { }
 
-//JSON file constructor
-MediaLibrary::MediaLibrary(string jsonfile){
-    Json::Reader reader;
-    Json::Value root;
-
-    ifstream infile(jsonfile.c_str(), ifstream::binary);
-    bool parse = reader.parse(infile,root,false);
-    if(parse){
-        Json::Value::Members values = root.getMemberNames();
-        for(int i = 0; i < values.size(); i++){
-            Json::Value media = root[values[i]];
-
-            library.push_back(MediaDescription(media));
-        }
-    }
-}
-
 //Add MediaDescription
 virtual bool MediaLibrary::Add(int mediaType, const string &title, const string &author, const string &album, const string &genre, const string &filename) {
     library.push_back(MediaDescription(mediaType, title, author, album, genre, filename));

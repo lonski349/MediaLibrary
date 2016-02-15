@@ -29,7 +29,9 @@
 #include "MediaLibrary.hpp"
 #include "MediaDescription.hpp"
 
-int main() {
+using namespace std;
+
+int main(int argc, const char * argv[]) {
    int port = 8080;
    string file = "media.json";
 

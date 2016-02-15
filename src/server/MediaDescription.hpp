@@ -33,7 +33,8 @@
 using namespace std;
 
 class MediaDescription {
-    int mediaType, title, author, album, genre, filename;
+    int mediaType;
+    string title, author, album, genre, filename;
 
 public:
     //declaring the onstructor
