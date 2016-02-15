@@ -40,13 +40,13 @@ using namespace jsonrpc;
 class MediaLibrary : public mediaserverstub {
 public:
     MediaLibrary(AbstractServerConnecter &connector, int port, string mediafile) : mediaserverstub(connector);
-    void notifyServer();
-    string serviceInfo();
+    virtual void notifyServer();
+    virtual string serviceInfo();
     MediaLibrary();
     MediaLibrary(string jsonFile);
     ~MediaLibrary();
-    bool Add(MediaDescription aClip);
-    bool Remove(string title);
+    virtual bool Add(int mediaType, string title, string author, string album, string genre, string filename);
+    virtual bool Remove(string title);
     virtual Json::Value get(string title);
     virtual Json::Value getTitles();
     virtual Json::Value getMusicTitles();

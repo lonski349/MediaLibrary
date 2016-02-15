@@ -26,7 +26,7 @@
 #include "MediaDescription.hpp"
 
 //defining the constructor
-MediaDescription::MediaDescription(string mediaType, string title, string author, string album, string genre, string filename) {
+MediaDescription::MediaDescription(int mediaType, string title, string author, string album, string genre, string filename) {
     this->mediaType = mediaType;
     this->title = title;
     this->author = author;
@@ -46,7 +46,7 @@ MediaDescription::MediaDescription(string mediaType, string title, string author
 
 //JSON file constructor
 MediaDescription::MediaDescription(Json::Value obj) {
-    this->mediaType = obj["mediaType"].asString();
+    this->mediaType = obj["mediaType"].asInt();
     this->title = obj["title"].asString();
     this->author = obj["author"].asString();
     this->genre = obj["genre"].asString();
@@ -55,7 +55,7 @@ MediaDescription::MediaDescription(Json::Value obj) {
 }
 
 //defining the accessors
-string MediaDescription::getMediaType() {
+int MediaDescription::getMediaType() {
     return this->mediaType;
 }
 string MediaDescription::getTitle() {
@@ -75,7 +75,7 @@ string MediaDescription::getFilename() {
 }
 
 //defining the mutators
-void MediaDescription::setMediaType(string mediaType) {
+void MediaDescription::setMediaType(int mediaType) {
     this->mediaType = mediaType;
 }
 void MediaDescription::setTitle(string title) {

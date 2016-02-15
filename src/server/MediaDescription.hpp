@@ -43,7 +43,7 @@ public:
     // ~MediaDescription();
 
     //declaring the accessors
-    string getMediaType();
+    int getMediaType();
     string getTitle();
     string getAuthor();
     string getAlbum();
@@ -51,7 +51,7 @@ public:
     string getFilename();
 
     //declaring the mutators
-    void setMediaType(string);
+    void setMediaType(int);
     void setTitle(string);
     void setAuthor(string);
     void setAlbum(string);
