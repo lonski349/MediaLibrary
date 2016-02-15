@@ -43,8 +43,8 @@ public:
     MediaLibrary(AbstractServerConnecter &connector, int port, string mediafile) : mediaserverstub(connector);
     virtual void notifyServer();
     virtual string serviceInfo();
-    virtual bool Add(int mediaType, const string &title, const string &author, const string &album, const string &genre, const string &filename);
-    virtual bool Remove(const string &title);
+    virtual bool add(int mediaType, const string &title, const string &author, const string &album, const string &genre, const string &filename);
+    virtual bool remove(const string &title);
     virtual Json::Value get(const string &title);
     virtual Json::Value getTitles();
     virtual Json::Value getMusicTitles();

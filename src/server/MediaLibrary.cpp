@@ -57,14 +57,14 @@ string MediaLibrary::serviceInfo() {
 }
 
 //Add MediaDescription
-bool MediaLibrary::Add(int mediaType, const string &title, const string &author, const string &album, const string &genre, const string &filename) {
+bool MediaLibrary::add(int mediaType, const string &title, const string &author, const string &album, const string &genre, const string &filename) {
     library.push_back(MediaDescription(mediaType, title, author, album, genre, filename));
     cout << title << " has been added to the Media Library ";
     return true;
 }
 
 //Remove Media
-bool MediaLibrary::Remove(const string &title) {
+bool MediaLibrary::remove(const string &title) {
     int found = findMedia(title);
     bool removed = false;
     if(found != -1) {
@@ -79,7 +79,12 @@ bool MediaLibrary::Remove(const string &title) {
 //Returns the MediaDescription
 Json::Value MediaLibrary::get(const string &title) {
    Json::Value media;
-   int found = findMedia(title);
+   int found = -1;
+   for(int i = 0; i < library.size(); i++) {
+       if(title.compare(library[i].getTitle()) == 0) {
+           found = i;
+       }
+   }
    media.append(library.at(found).getMediaType());
    media.append(library.at(found).getTitle());
    media.append(library.at(found).getAuthor());
@@ -93,7 +98,7 @@ Json::Value MediaLibrary::get(const string &title) {
 Json::Value MediaLibrary::getTitles() {
     Json::Value titles;
     for(int i = 0; i < library.size(); i++) {
-        titles.append(library[i].getTitle());
+        titles.append(library.at(i).getTitle());
     }
     return titles;
 }
@@ -102,8 +107,8 @@ Json::Value MediaLibrary::getTitles() {
 Json::Value MediaLibrary::getMusicTitles() {
     Json::Value titles;
     for(int i = 0; i < library.size(); i++) {
-        if(library[i].getMediaType() == 0) {
-            titles.append(library[i].getTitle());
+        if(library.at(i).getMediaType() == 0) {
+            titles.append(library.at(i).getTitle());
         }
     }
     return titles;
@@ -113,8 +118,8 @@ Json::Value MediaLibrary::getMusicTitles() {
 Json::Value MediaLibrary::getVideoTitles() {
     Json::Value titles;
     for(int i = 0; i < library.size(); i++) {
-        if(library[i].getMediaType() == 1) {
-            titles.append(library[i].getTitle());
+        if(library.at(i).getMediaType() == 1) {
+            titles.append(library.at(i).getTitle());
         }
     }
     return titles;
