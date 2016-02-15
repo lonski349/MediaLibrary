@@ -108,7 +108,13 @@ Json::Value MediaDescription::toJson() {
 
 //defining the toString method
 string MediaDescription::toString() {
-    return "MediaDescription{ mediaType = " + mediaType == 0 ? "Music" : "Video" +
+    string temp;
+    if (mediaType == 0) {
+      return "Music";
+    } else {
+      return "Video";
+    }
+    return "MediaDescription{ mediaType = " + temp +
            ", title = '" + title + '\'' +
            ", author = '" + author + '\'' +
            ", album = '" + album + '\'' +
