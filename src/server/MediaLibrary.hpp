@@ -39,6 +39,9 @@ using namespace jsonrpc;
 using namespace std;
 
 class MediaLibrary : public mediaserverstub {
+  vector<MediaDescription> library;
+  int findMedia(string title);
+  int portNumber;
 public:
     MediaLibrary(AbstractServerConnecter &connector, int port, string mediafile);
     virtual void notifyServer();
@@ -50,12 +53,7 @@ public:
     virtual Json::Value getMusicTitles();
     virtual Json::Value getVideoTitles();
 
-    void toJsonFile(string jsonfile);
-
-private:
-    vector<MediaDescription> library;
-    int findMedia(string title);
-    int portNumber;
+    void toJsonFile(string jsonfile);    
 };
 
 #endif /* MediaLibrary_hpp */
