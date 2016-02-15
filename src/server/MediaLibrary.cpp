@@ -81,8 +81,8 @@ MediaLibrary::MediaLibrary(string jsonfile){
 
 //Add MediaDescription
 virtual bool MediaLibrary::Add(int mediaType, const string &title, const string &author, const string &album, const string &genre, const string &filename) {
-    library.push_back(aClip);
-    cout << aClip.getTitle() << " has been added to the Media Library ";
+    library.push_back(MediaDescription(mediaType, title, author, album, genre, filename));
+    cout << title << " has been added to the Media Library ";
     return true;
 }
 
