@@ -36,6 +36,7 @@
 #include "mediaserverstub.h"
 
 using namespace jsonrpc;
+using namespace std;
 
 class MediaLibrary : public mediaserverstub {
 public:
@@ -43,7 +44,6 @@ public:
     virtual void notifyServer();
     virtual string serviceInfo();
     MediaLibrary();
-    MediaLibrary(string jsonFile);
     ~MediaLibrary();
     virtual bool Add(int mediaType, const string &title, const string &author, const string &album, const string &genre, const string &filename);
     virtual bool Remove(const string &title);
