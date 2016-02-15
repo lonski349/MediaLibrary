@@ -34,9 +34,9 @@ int main() {
    string file = "media.json";
 
    HttpServer httpserver(port);
-   MediaServer ms(httpserver, port, file);
-   ms.StartListening();
+   MediaLibrary ml(httpserver, port, file);
+   ml.StartListening();
    int c = getchar();
-   ms.StopListening();
+   ml.StopListening();
    return 0;
 }
