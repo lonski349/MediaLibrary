@@ -45,9 +45,9 @@ public:
     MediaLibrary();
     MediaLibrary(string jsonFile);
     ~MediaLibrary();
-    virtual bool Add(int mediaType, string title, string author, string album, string genre, string filename);
-    virtual bool Remove(string title);
-    virtual Json::Value get(string title);
+    virtual bool Add(int mediaType, const string &title, const string &author, const string &album, const string &genre, const string &filename);
+    virtual bool Remove(const string &title);
+    virtual Json::Value get(const string &title);
     virtual Json::Value getTitles();
     virtual Json::Value getMusicTitles();
     virtual Json::Value getVideoTitles();

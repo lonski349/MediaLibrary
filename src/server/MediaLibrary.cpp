@@ -80,14 +80,14 @@ MediaLibrary::MediaLibrary(string jsonfile){
 }
 
 //Add MediaDescription
-bool MediaLibrary::Add(MediaDescription aClip) {
+virtual bool MediaLibrary::Add(int mediaType, const string &title, const string &author, const string &album, const string &genre, const string &filename) {
     library.push_back(aClip);
     cout << aClip.getTitle() << " has been added to the Media Library ";
     return true;
 }
 
 //Remove Media
-bool MediaLibrary::Remove(string title) {
+virtual bool MediaLibrary::Remove(const string &title) {
     int found = findMedia(title);
     bool removed = false;
     if(found != -1) {
@@ -100,7 +100,7 @@ bool MediaLibrary::Remove(string title) {
 }
 
 //Returns the MediaDescription
- virtual Json::Value MediaLibrary::get(string title) {
+ virtual Json::Value MediaLibrary::get(const string &title) {
     int found = findMedia(title);
     return library[found].toJson();
 }
@@ -118,7 +118,7 @@ virtual Json::Value MediaLibrary::getTitles() {
 virtual Json::Value MediaLibrary::getMusicTitles() {
     Json::Value titles;
     for(int i = 0; i < library.size(); i++) {
-        if(library[i].getMediaType().compare("Music") == 0) {
+        if(library[i].getMediaType() == 0) {
             titles.append(library[i].getTitle());
         }
     }
@@ -129,7 +129,7 @@ virtual Json::Value MediaLibrary::getMusicTitles() {
 virtual Json::Value MediaLibrary::getVideoTitles() {
     Json::Value titles;
     for(int i = 0; i < library.size(); i++) {
-        if(library[i].getMediaType().compare("Video") == 0) {
+        if(library[i].getMediaType() == 1) {
             titles.append(library[i].getTitle());
         }
     }

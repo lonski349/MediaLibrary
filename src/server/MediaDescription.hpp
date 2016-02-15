@@ -33,11 +33,11 @@
 using namespace std;
 
 class MediaDescription {
-    string mediaType, title, author, album, genre, filename;
+    int mediaType, title, author, album, genre, filename;
 
 public:
     //declaring the onstructor
-    MediaDescription(string, string, string, string, string, string);
+    MediaDescription(int, string, string, string, string, string);
 
     MediaDescription(Json::Value obj);
     // ~MediaDescription();
