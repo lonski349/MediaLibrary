@@ -79,14 +79,14 @@ bool MediaLibrary::Remove(const string &title) {
 //Returns the MediaDescription
 Json::Value MediaLibrary::get(const string &title) {
    Json::Value media;
-    int found = findMedia(title);
-    media.append(library[found].getMediaType());
-    media.append(library[found].getTitle());
-    media.append(library[found].getAuthor());
-    media.append(library[found].getGenre());
-    media.append(library[found].getAlbum());
-    media.append(library[found].getFilename());
-    return media;
+   int found = findMedia(title);
+   media.append(library[found].getMediaType());
+   media.append(library[found].getTitle());
+   media.append(library[found].getAuthor());
+   media.append(library[found].getGenre());
+   media.append(library[found].getAlbum());
+   media.append(library[found].getFilename());
+   return media;
 }
 
 //Returns a vector of all titles.
@@ -121,12 +121,11 @@ Json::Value MediaLibrary::getVideoTitles() {
 }
 
 //Returns the index of a specified title
-int MediaLibrary::findMedia(string title) {
+int MediaLibrary::findMedia(const string &title) {
     int found = -1;
     for(int i = 0; i < library.size(); i++) {
         if(title.compare(library[i].getTitle()) == 0) {
             found = i;
-            break;
         }
     }
     return found;
