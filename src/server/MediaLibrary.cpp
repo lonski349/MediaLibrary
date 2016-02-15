@@ -33,7 +33,7 @@ MediaLibrary::MediaLibrary(AbstractServerConnector &connector, int port, string 
   Json::Reader reader;
   Json::Value root;
 
-  ifstream infile(jsonfile.c_str(), ifstream::binary);
+  ifstream infile(mediafile.c_str(), ifstream::binary);
   bool parse = reader.parse(infile,root,false);
   if(parse){
       Json::Value::Members values = root.getMemberNames();
