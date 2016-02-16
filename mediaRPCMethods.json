@@ -2,38 +2,38 @@
     {
 	"method": "notifyServer"
     },
-    {	
+    {
         "method": "serviceInfo",
         "params": [ ],
         "returns": "I am the Media server."
     },
-    {	
-        "method": "Add",
+    {
+        "method": "add",
         "params": [1, "title", "author", "genre", "album", "filename"],
         "returns": true
     },
-    {	
-        "method": "Remove",
+    {
+        "method": "remove",
         "params": ["title"],
         "returns": true
     },
-    {	
-        "method": "Get",
+    {
+        "method": "get",
         "params": ["title"],
         "returns": [1, "title", "author", "genre", "album", "filename"]
     },
-    {	
-        "method": "GetTitles",
+    {
+        "method": "getTitles",
         "params": [],
         "returns": [ ]
     },
-    {	
-        "method": "GetMusicTitles",
+    {
+        "method": "getMusicTitles",
         "params": [],
         "returns": [ ]
     },
-    {	
-        "method": "GetVideoTitles",
+    {
+        "method": "getVideoTitles",
         "params": [],
         "returns": [ ]
     }

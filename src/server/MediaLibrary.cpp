@@ -21,7 +21,7 @@
  * from MediaDescription objects.
  *
  * @author Brian Harman bsharman@asu.edu
- * @version January 2016
+ * @version February 2016
  */
 
 #include "MediaLibrary.hpp"

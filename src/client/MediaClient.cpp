@@ -27,8 +27,8 @@ using namespace std;
  * Software Engineering,
  * Arizona State University at the Polytechnic campus
  * <p/>
- * This class has been modified by Steven Carneado for use with
- * the Assign 5 MediaServer.
+ * This class has been modified by Brian Harman for use with
+ * the Assign 5 MediaLibrary.
  * <p>
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -56,7 +56,7 @@ using namespace std;
  * @author Tim Lindquist (Tim.Lindquist@asu.edu) CIDSE - Software Engineering,
  *                       IAFSE, ASU at the Polytechnic campus
  * @file    MediaClient.cpp
- * @date    August, 2015
+ * @date    February, 2016
  **/
 
 // string variable and run method for use with threading. A separate thread
@@ -344,6 +344,6 @@ public:
 // main method for this program.
 int main(int argc, char * argv[]) {
    std::string nameStr = "Harman Library";
-   MediaClient mc(nameStr, "http://192.168.1.10:8080");
+   MediaClient mc(nameStr, "http://192.168.0.59:8080");
    return (Fl::run());
 }

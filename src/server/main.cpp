@@ -22,7 +22,7 @@
  *
  * @author Brian Harman bsharman@asu.edu
  *
- * @version Januaray 2016
+ * @version February 2016
  */
 
 #include <iostream>

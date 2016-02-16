@@ -20,8 +20,8 @@ using namespace std;
  * Software Engineering,
  * Arizona State University at the Polytechnic campus
  * <p>
- * This class has been modified by Steven Carneado for use with
- * the Assign 5 MediaServer.
+ * This class has been modified by Brian Harman for use with
+ * the Assign 5 MediaLibrary.
  * <p>
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -50,7 +50,7 @@ using namespace std;
  * \author Tim Lindquist (Tim.Lindquist@asu.edu) CIDSE - Software Engineering,
  *                       IAFSE, ASU at the Polytechnic campus
  * \file    MediaClientGui.cpp
- * \date    August, 2015
+ * \date    February, 2016
  **/
 class MediaClientGui : public Fl_Window {
 protected:

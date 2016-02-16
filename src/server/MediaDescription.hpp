@@ -20,7 +20,7 @@
  * Purpose: This class stores media file information
  *
  * @author Brian Harman bsharman@asu.edu
- * @version January 2016
+ * @version February 2016
  */
 
 #ifndef MediaDescription_hpp
