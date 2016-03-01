@@ -7,8 +7,10 @@
    <taskdef resource="cpptasks.tasks"/>
    <taskdef resource="net/sf/antcontrib/antcontrib.properties"/>
 
-   <property name="csrc.dir" value="src"/>
+   <property name="csrc.dir" value="src/cpp"/>
+   <property name="jsrc.dir" value="src/java"/>
    <property name="dist.dir" value="bin" />
+   <property name="classes.dir" value="classes"/>
    <property name="lib" value="./lib" />
    <property name="host.name" value="127.0.0.1"/>
    <property name="port.num" value="8080"/>
@@ -20,24 +22,39 @@
    <property name="includepath" value="/usr/local/include"/>
    <property name="includepath2" value="/usr/include/jsoncpp"/>
    <property name="cxxflag" value="-std=c++11"/>
-   
+   <property name="portNum" value="3030"/>
+
 
    <target name="targets">
-      <echo message="Targets are clean, prepare, generate.server.stub, build.server, generate.client.stub, build.client, targets"/>
+      <echo message="Targets are clean, prepare, generate.server.stub, build.server, generate.client.stub, build.client, build.java.client, build.downserver, execute.downserver, targets"/>
       <echo message="base directory is: ${basedir}"/>
       <echo message="execute server with: ./bin/mediaRPCServer ${port.num}"/>
-      <echo message="execute client with: ./bin/mediaRPCClient http://${host.name}:${port.num}"/>   
+      <echo message="invoke java client with: java -cp classes:lib/mediaGui.jar:lib/json.jar Client http://host_name host_name portNum"/>   
    </target>
-   
+
+   <path id="compile.classpath">
+      <pathelement location="${classes.dir}"/>
+      <fileset dir="${basedir}/lib">
+         <include name="mediaGui.jar"/>
+         <include name="json.jar"/>
+      </fileset>
+   </path>
+
    <target name="prepare">
       <mkdir dir="${dist.dir}" />
+      <mkdir dir="${classes.dir}" />
    </target>
 
    <target name="clean">
       <delete dir="${dist.dir}" failonerror="false"/>
+      <delete dir="${classes.dir}" failonerror="false"/>
       <delete file="${csrc.dir}/server/mediaserverstub.h"
               failonerror="false"/>
       <delete file="${csrc.dir}/client/mediastub.h"
+              failonerror="false"/>
+      <delete file="DataClient/mediafile.mp3"
+              failonerror="false"/>
+      <delete file="DataClient/mediafile.mp4"
               failonerror="false"/>
    </target>
 
@@ -84,6 +101,34 @@
          <fileset dir="${csrc.dir}/server"
                   includes="*.hpp, *.cpp"/>
       </cc>
+   </target>
+
+   <target name="build.java.client" depends="prepare"
+          description="Compile Java sample client sources">
+     <!-- Compile Java classes as necessary -->
+     <javac srcdir="${jsrc.dir}/client"
+            destdir="${classes.dir}"
+            includeantruntime="false">
+        <classpath refid="compile.classpath"/>
+    </javac>
+  </target>
+
+  <target name="build.downserver" depends="prepare"
+          description="Compile Java sample client sources">
+     <!-- Compile Java classes as necessary -->
+     <javac srcdir="${jsrc.dir}/dserver"
+            destdir="${classes.dir}"
+            includeantruntime="false">
+        <classpath refid="compile.classpath"/>
+    </javac>
+  </target>
+
+   <target name="execute.downserver" depends="build.downserver"
+           description="Run the program">
+         <java classname="DownloadServer" fork="yes">
+           <classpath refid="compile.classpath"/>
+           <arg value="${portNum}"/>
+         </java>
    </target>
 
 
