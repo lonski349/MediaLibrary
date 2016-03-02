@@ -46,7 +46,7 @@ public class Client extends MediaLibraryGUI implements TreeWillExpandListener, A
     private static final boolean debugOn = true;
     private static final boolean boostrapOn = false;
     private static final int downloadSize = 10000000;
-    private boolean stop;
+    private boolean stopPlaying;
     private Socket sock;
     private String host;
     private int port;
