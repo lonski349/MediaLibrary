@@ -7,5 +7,7 @@
  "Bye Bye Love":{"title":"Bye Bye Love","mediaType":0,"author":"Everly Brothers","album":"Oldies-60s","genre":"60s","filename":"ByeByeLove.mp3"},
  "Crazy":{"title":"Crazy","mediaType":0,"author":"Patsy Cline","album":"Oldies-60s","genre":"60s","filename":"Crazy.mp3"},
  "OhPrettyWoman":{"title":"OhPrettyWoman","mediaType":0,"author":"Roy Orbison","album":"Best of Orbison","genre":"60s","filename":"OhPrettyWoman.mp3"},
- "Only The Lonely":{"title":"Only The Lonely","mediaType":0,"author":"Roy Orbison","album":"Best of Orbison","genre":"60s","filename":"OnlyTheLonely.mp3"}
+ "Only The Lonely":{"title":"Only The Lonely","mediaType":0,"author":"Roy Orbison","album":"Best of Orbison","genre":"60s","filename":"OnlyTheLonely.mp3"},
+ "Style":{"title":"Style","mediaType":0,"author":"Taylor Swift","album":"1989","genre":"Pop","filename":"Style.mp3"},
+ "Nature":{"title":"Nature","mediaType":1,"author":"Unknown","album":"Unknown","genre":"Documentary","filename":"Nature.mp4"}
 }
