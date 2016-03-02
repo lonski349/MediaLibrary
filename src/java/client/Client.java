@@ -109,7 +109,7 @@ public class Client extends MediaLibraryGui implements
     * @param root Is the root node of the tree to be initialized.
     * @param base Is the string that is the root node of the tree.
     */
-    
+
    public void buildInitialTree(DefaultMutableTreeNode root, String base){
       //set up the context and base name
       try{
@@ -306,7 +306,7 @@ public class Client extends MediaLibraryGui implements
                 "DataClient/mediafile.mp4";
             String aURIPath = "file://"+System.getProperty("user.dir")+"/"+
                mediaFileName;
-
+            System.out.println(mediaFileName);
             sock = new Socket(host, portNum);
             byte[] bytesToSend = nodeFileName.getBytes();
             byte[] bytesToReceive = new byte[downloadSize];
