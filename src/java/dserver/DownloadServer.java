@@ -29,8 +29,8 @@ import java.net.Socket;
  */
 public class DownloadServer extends Thread {
 
-    public static final String mp3 = "Server/Style.mp3";
-    public static final String mp4 = "Server/Nature.mp4";
+    public static final String mp3 = "DataServer/Style.mp3";
+    public static final String mp4 = "DataServer/Nature.mp4";
     private Socket conn;
     private int id;
 

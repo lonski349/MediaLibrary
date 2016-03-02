@@ -306,7 +306,6 @@ public class Client extends MediaLibraryGui implements
                 "DataClient/mediafile.mp4";
             String aURIPath = "file://"+System.getProperty("user.dir")+"/"+
                mediaFileName;
-            System.out.println(mediaFileName);
             sock = new Socket(host, portNum);
             byte[] bytesToSend = nodeFileName.getBytes();
             byte[] bytesToReceive = new byte[downloadSize];
