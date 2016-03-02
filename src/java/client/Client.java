@@ -43,7 +43,7 @@ import org.json.JSONArray;
  * @version October 2015
  */
 
-public class JavaMediaClient extends MediaLibraryGui implements
+public class Client extends MediaLibraryGui implements
 			TreeWillExpandListener,ActionListener, TreeSelectionListener {
 
    private static final boolean debugOn = true;
@@ -58,7 +58,7 @@ public class JavaMediaClient extends MediaLibraryGui implements
    private JsonRpcRequestViaHttp server;
    public static int id = 0;
 
-   public JavaMediaClient(String author, String serviceURL, String host, int portNum ) {
+   public Client(String author, String serviceURL, String host, int portNum ) {
       super(author);
       this.serviceURL = serviceURL;
       this.host = host;
@@ -548,7 +548,7 @@ public class JavaMediaClient extends MediaLibraryGui implements
             port = Integer.parseInt(args[2]);
          }
          System.out.println("calling constructor name "+authorName);
-         JavaMediaClient mla = new JavaMediaClient(authorName, url, host, port);
+         Client mla = new Client(authorName, url, host, port);
       }catch (Exception ex){
          System.out.println("Exception in main: "+ex.getMessage());
          ex.printStackTrace();
