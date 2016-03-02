@@ -210,13 +210,13 @@ public class Client extends MediaLibraryGUI implements TreeWillExpandListener, A
         return ret;
     }
 
-    public void treeWillCollapse(TreeExpansionEvent tree) {
-        debug("Collapsing tree to the following path: " + tree.getPath());
-        tree.setSelectionPath(tree.getPath());
+    public void treeWillCollapse(TreeExpansionEvent tee) {
+        debug("Collapsing tree to the following path: " + tee.getPath());
+        tree.setSelectionPath(tee.getPath());
     }
 
-    public void treeWillExpand(TreeExpansionEvent tree) {
-        debug("Expanding tree to the following path: " + tree.getPath());
+    public void treeWillExpand(TreeExpansionEvent tee) {
+        debug("Expanding tree to the following path: " + tee.getPath());
     }
 
     public void valueChanged(TreeSelectionEvent e) {
