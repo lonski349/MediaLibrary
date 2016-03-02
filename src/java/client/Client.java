@@ -109,6 +109,7 @@ public class Client extends MediaLibraryGui implements
     * @param root Is the root node of the tree to be initialized.
     * @param base Is the string that is the root node of the tree.
     */
+    
    public void buildInitialTree(DefaultMutableTreeNode root, String base){
       //set up the context and base name
       try{
@@ -235,10 +236,6 @@ public class Client extends MediaLibraryGui implements
 
    public void treeWillExpand(TreeExpansionEvent tee) {
       debug("In treeWillExpand with path: "+tee.getPath());
-      //DefaultMutableTreeNode dmtn =
-      //    (DefaultMutableTreeNode)tee.getPath().getLastPathComponent();
-      //System.out.println("will expand node: "+dmtn.getUserObject()+
-      //		   " whose path is: "+tee.getPath());
    }
 
    public void valueChanged(TreeSelectionEvent e) {
@@ -537,7 +534,7 @@ public class Client extends MediaLibraryGui implements
 
    public static void main(String args[]) {
       try{
-         String authorName = "Steven Carneado Library";
+         String authorName = "Media Library";
          String url = "http://127.0.0.1:8080/";
          String host = "127.0.0.1";
          int port = 3030;
