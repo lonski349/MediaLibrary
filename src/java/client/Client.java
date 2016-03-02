@@ -18,7 +18,7 @@ import org.json.JSONObject;
 import org.json.JSONArray;
 
 /**
- * Copyright 2015 Steven Carneado,
+ * Copyright 2016 Brian Harman,
  *
  * ASU has permission to use this code to copy, execute, and distribute as
  * necessary for evaluation in the Ser321 course, and as otherwise required
@@ -38,9 +38,9 @@ import org.json.JSONArray;
  *
  * Purpose: GUI Media client for MediaServer
  *
- * @author Steven Carneado scarnead@asu.edu
+ * @author Brian Harman bsharman@asu.edu
  *
- * @version October 2015
+ * @version March 2016
  */
 
 public class Client extends MediaLibraryGui implements
@@ -355,7 +355,7 @@ public class Client extends MediaLibraryGui implements
 		   String album, String filename){
 	   boolean result = false;
 	   try{
-		   String jsonString = packageMediaCall("Add");
+		   String jsonString = packageMediaCall("add");
 		   String insert = ",\"params\":[" + mtype + ",\"" + title + "\",\""
 				   + author + "\",\"" + genre + "\",\"" + album + "\",\"" + filename + "\"]";
 		   String begin = jsonString.substring(0,jsonString.length()-1);
@@ -377,7 +377,7 @@ public class Client extends MediaLibraryGui implements
    public boolean remove(String title){
 	   boolean result = false;
 	   try{
-		   String jsonString = packageMediaCall("Remove");
+		   String jsonString = packageMediaCall("remove");
 		   String insert = ",\"params\":[\"" + title + "\"]";
 		   String begin = jsonString.substring(0,jsonString.length()-1);
 		   String end = jsonString.substring(jsonString.length()-1);
@@ -398,7 +398,7 @@ public class Client extends MediaLibraryGui implements
    public JSONObject get(String title){
 	   JSONObject res = null;
 	   try{
-		   String jsonString = packageMediaCall("Get");
+		   String jsonString = packageMediaCall("get");
 		   String insert = ",\"params\":[\"" + title + "\"]";
 		   String begin = jsonString.substring(0,jsonString.length()-1);
 		   String end = jsonString.substring(jsonString.length()-1);
@@ -419,7 +419,7 @@ public class Client extends MediaLibraryGui implements
    public String[] getTitles(){
 	   ArrayList<String> titles = new ArrayList<String>();
 	   try{
-		   String jsonString = packageMediaCall("GetTitles");
+		   String jsonString = packageMediaCall("getTitles");
 		   String insert = ",\"params\":[]";
 		   String begin = jsonString.substring(0,jsonString.length()-1);
 		   String end = jsonString.substring(jsonString.length()-1);
@@ -443,7 +443,7 @@ public class Client extends MediaLibraryGui implements
    public String[] getMusicTitles(){
 	   ArrayList<String> titles = new ArrayList<String>();
 	   try{
-		   String jsonString = packageMediaCall("GetMusicTitles");
+		   String jsonString = packageMediaCall("getMusicTitles");
 		   String insert = ",\"params\":[]";
 		   String begin = jsonString.substring(0,jsonString.length()-1);
 		   String end = jsonString.substring(jsonString.length()-1);
@@ -467,7 +467,7 @@ public class Client extends MediaLibraryGui implements
    public String[] getVideoTitles(){
 	   ArrayList<String> titles = new ArrayList<String>();
 	   try{
-		   String jsonString = packageMediaCall("GetVideoTitles");
+		   String jsonString = packageMediaCall("getVideoTitles");
 		   String insert = ",\"params\":[]";
 		   String begin = jsonString.substring(0,jsonString.length()-1);
 		   String end = jsonString.substring(jsonString.length()-1);
